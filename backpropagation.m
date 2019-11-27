@@ -41,7 +41,8 @@ for epoch = 1:Epochs
         fprintf('Output:\n%f\n', Output);
 
         %Backwards Propagation
-        BetaOut = Output*(1-Output)*(DesiredOutput(e)- Output);
+        Error = DesiredOutput(e)- Output;
+        BetaOut = Output*(1-Output)*(Error);
         for n = 1:length(Weights2)
             DeltaW(1,n) = LearnRate*BetaOut*Input(e,n);
         end
@@ -78,6 +79,6 @@ for epoch = 1:Epochs
             end
         end
         clearvars DeltaW;
-        %fprintf('Epoch %3d:  Error = %f\n',epoch,1);
+        fprintf('Epoch %3d:  Error = %f\n',epoch,Error);
     end
 end
