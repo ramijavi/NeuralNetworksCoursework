@@ -1,4 +1,5 @@
 %Initilization of variables
+%Input and desired output
 Input = [0,1;1,0];
 DesiredOutput = [1,1];
 %Weights between the input nodes and the hidden layer nodes
@@ -14,9 +15,9 @@ InputsNum = 2;
 %Learning rate
 LearnRate = 1;
 %Number of epochs our algorithm will run through
-Epochs = 100;
+Epochs = 1;
 %Number of examples
-Examples = 2; %TO CHANGE
+Examples = 2;
 
 for epoch = 1:Epochs
     for e = 1:Examples
@@ -65,16 +66,16 @@ for epoch = 1:Epochs
         %Weights Updating
         counter = 1;
         for n = 1:length(Weights2)
-            Weights2(n) = Weights2(n) + DeltaW(counter);
+            Weights2(n) = round(Weights2(n) + DeltaW(counter),4);
             counter = counter+1;
         end
         for n = 1:length(Weights3)
-            Weights3(n) = Weights3(n) + DeltaW(counter);
+            Weights3(n) = round(Weights3(n) + DeltaW(counter),4);
             counter = counter+1;
         end
         for n = 1:numel(Weights1)
             if Weights1(n) ~= 0
-               Weights1(n) = Weights1(n) + DeltaW(counter);
+               Weights1(n) = round(Weights1(n) + DeltaW(counter),4);
                counter = counter+1; 
             end
         end
